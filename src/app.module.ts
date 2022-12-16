@@ -13,19 +13,20 @@ import { User } from './auth/entities/auth.entity';
   imports: [
     AuthModule,
   WinstonModule.forRoot({}),
-  ConfigModule.forRoot({
-    envFilePath: [`.env.${process.env.STAGE}`],
-    isGlobal: true,
-    // validationSchema: configSchemaValidation,
-  }),
+  ConfigModule.forRoot(),
+  // ConfigModule.forRoot({
+  //   envFilePath: [`.env.${process.env.STAGE}`],
+  //   isGlobal: true,
+  //   validationSchema: configSchemaValidation,
+  // }),
   AuthModule,
   TypeOrmModule.forRoot({
     type: 'postgres',
-    host: 'localhost',
-    port: 5432,
-    username: 'postgres',
-    password: 'Akinwunmipg',
-    database: 'test',
+    host: process.env.DB_HOST, 
+    port: parseInt(process.env.DB_PORT),
+    username: process.env.DB_USERNAME, 
+    password: process.env.DB_PASSWORD, 
+    database: process.env.DB_DATABASE, 
     entities: [User],
     synchronize: true,
   })

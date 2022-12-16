@@ -11,8 +11,8 @@ import { UserRepository } from './user.repository';
 @Injectable()
 export class AuthService {
   constructor(
-    @InjectRepository(UserRepository)
-    private userPository: UserRepository,
+    @InjectRepository(User)
+    private userPository: Repository<User>,
     // private jwt: JwtService,
     private config: ConfigService,
   ) {}
@@ -25,8 +25,8 @@ export class AuthService {
   }
   async createAuth(createAuthDto: CreateAuthDto) {
     // const { username, password} = createAuthDto;
-    const task = await this.userPository.createUser(createAuthDto);
-    await this.userPository.save(task);
+    const task = await this.userPository.create(createAuthDto);
+    // await this.userPository.save(task);
     return task;
      
     // const auth = await this.userPository.createUser(createAuthDto);
@@ -35,7 +35,7 @@ export class AuthService {
   }
 
   findAll() {
-    return `This action returns all auth`;
+    return  `This action returns all auth`;
   }
 
   findOne(id: number) {
