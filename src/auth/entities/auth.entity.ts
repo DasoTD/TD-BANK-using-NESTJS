@@ -8,30 +8,30 @@ export class User {
     @Column({unique: true})
     username: string;
 
-    @Column()
-    firstname: string;
+    // @Column()
+    // firstname: string;
 
-    @Column()
-    lastname: string;
+    // @Column()
+    // lastname: string;
 
-    @Column({unique: true})
-    email: string;
+    // @Column({unique: true})
+    // email: string;
 
     @Column()
     password: string;
 
-    @Column()
-    address: string;
+    // @Column()
+    // address: string;
 
-    @Column()
-    gender: string;
+    // @Column()
+    // gender: string;
 
-    @Column()
-    profilePicture: string;
+    // @Column()
+    // profilePicture: string;
 
-    @Column({unique: true})
-    phoneNumber: string;
+    // @Column({unique: true})
+    // phoneNumber: string;
 
-    @Column()
-    lastLogin: Date;
+    // @Column()
+    // lastLogin: Date;
 }

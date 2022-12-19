@@ -11,9 +11,9 @@ import { User } from './entities/auth.entity';
 
 @Module({
   imports: [
-    ConfigModule,
+    // ConfigModule,
     UserRepository,
-    PassportModule.register({ defaultStrategy: 'jwt' }),
+    // PassportModule.register({ defaultStrategy: 'jwt' }),
     // JwtModule.registerAsync({
     //   imports: [ConfigModule],
     //   inject: [ConfigService],
@@ -27,7 +27,7 @@ import { User } from './entities/auth.entity';
     TypeOrmModule.forFeature([User])
   ],
   controllers: [AuthController],
-  providers: [AuthService,  UserRepository], //Jwtstrategy,
-  exports: [ PassportModule, TypeOrmModule], //Jwtstrategy,
+  providers: [AuthService,UserRepository  ], //Jwtstrategy,UserRepository
+  exports: [  TypeOrmModule], //Jwtstrategy, PassportModule,
 })
 export class AuthModule {}

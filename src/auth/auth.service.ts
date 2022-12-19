@@ -11,10 +11,10 @@ import { UserRepository } from './user.repository';
 @Injectable()
 export class AuthService {
   constructor(
-    @InjectRepository(User)
-    private userPository: Repository<User>,
+    @InjectRepository(UserRepository)
+    private userPository: UserRepository,
     // private jwt: JwtService,
-    private config: ConfigService,
+    // private config: ConfigService,
   ) {}
 
   // signUp(createAuthDto: CreateAuthDto): Promise<User> {
@@ -23,19 +23,18 @@ export class AuthService {
   signIn(createAuthDto: CreateAuthDto){
 
   }
-  async createAuth(createAuthDto: CreateAuthDto) {
-    // const { username, password} = createAuthDto;
-    const task = await this.userPository.create(createAuthDto);
-    // await this.userPository.save(task);
+  async createAuth(createAuthDto: CreateAuthDto): Promise<User> {
+    const { username, password} = createAuthDto;
+    const task = this.userPository.createUser({
+      username,
+      password,
+    });
     return task;
-     
-    // const auth = await this.userPository.createUser(createAuthDto);
-    // return auth;
-    // return 'This action adds a new auth';
+    
   }
 
   findAll() {
-    return  `This action returns all auth`;
+    return `This action returns all auth`;
   }
 
   findOne(id: number) {
