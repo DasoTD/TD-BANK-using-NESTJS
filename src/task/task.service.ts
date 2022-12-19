@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { NestjsWinstonLoggerService } from 'nestjs-winston-logger';
 import { Repository } from 'typeorm';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { UpdateTaskDto } from './dto/update-task.dto';
@@ -12,7 +13,8 @@ import { TaskRepository } from './tasks.repository';
 export class TaskService {
   constructor(
     @InjectRepository(Task)
-    private taskRepository: Repository<Task>
+    private taskRepository: Repository<Task>,
+    // private logger : NestjsWinstonLoggerService
   ){}
   create(createTaskDto: CreateTaskDto) {
     const { name } = createTaskDto;
@@ -23,6 +25,8 @@ export class TaskService {
   }
 
   findAll() {
+    // this.logger.error('error plenty abeg'); 
+    // this.logger.verbose('dddd')
     return this.taskRepository.find(); // `This action returns all task`;
   }
 
