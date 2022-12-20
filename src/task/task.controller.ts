@@ -16,6 +16,10 @@ export class TaskController {
   findAll() {
     return this.taskService.findAll();
   }
+  @Post("/encrypt")
+  encrypt(@Body() data) {
+    return this.taskService.encrypt(data);
+  }
 
   @Get(':id')
   findOne(@Param('id') id: string) {

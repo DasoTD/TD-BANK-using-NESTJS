@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { NestjsWinstonLoggerService } from 'nestjs-winston-logger';
+import { encryptResponse } from 'src/utils/encryption';
 import { Repository } from 'typeorm';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { UpdateTaskDto } from './dto/update-task.dto';
@@ -28,6 +29,10 @@ export class TaskService {
     // this.logger.error('error plenty abeg'); 
     // this.logger.verbose('dddd')
     return this.taskRepository.find(); // `This action returns all task`;
+  }
+  
+  encrypt(data){
+    return encryptResponse(JSON.stringify(data));
   }
 
   findOne(id: number) {
