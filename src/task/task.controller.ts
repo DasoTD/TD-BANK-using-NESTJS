@@ -17,8 +17,13 @@ export class TaskController {
     return this.taskService.findAll();
   }
   @Post("/encrypt")
-  encrypt(@Body() data) {
-    return this.taskService.encrypt(data);
+  encrypt() {
+    return this.taskService.encrypt();
+  }
+
+  @Post("/decrypt")
+  decrypt(@Body() data: Buffer) {
+    return this.taskService.decrypt(data);
   }
 
   @Get(':id')
