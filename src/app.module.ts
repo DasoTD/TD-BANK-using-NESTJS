@@ -13,7 +13,7 @@ import { TaskModule } from './task/task.module';
 @Module({
   imports: [
     // AuthModule,
-  // WinstonModule.forRoot({}),
+  WinstonModule.forRoot({}),
   // ConfigModule.forRoot(),
   // ConfigModule.forRoot({
   //   envFilePath: [`.env.${process.env.STAGE}`],
@@ -22,6 +22,14 @@ import { TaskModule } from './task/task.module';
   // }),
   AuthModule,
   TypeOrmModule.forRoot({
+    // type: 'mongodb',
+    // host: process.env.DB_HOST,
+    // port: parseInt(process.env.DB_PORT),
+    // username: process.env.DB_USERNAME,
+    // password: process.env.DB_PASSWORD,
+    // database: process.env.DB_DATABASE,
+    // ssl: true,
+
     type: 'postgres',
     host: process.env.DB_HOST, 
     port: parseInt(process.env.DB_PORT),
