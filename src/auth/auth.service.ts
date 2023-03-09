@@ -25,7 +25,7 @@ export class AuthService {
   }
   async createAuth(createAuthDto: CreateAuthDto): Promise<User> {
     const { username, password} = createAuthDto;
-    const task = this.userPository.createUser({
+    const task = await this.userPository.createUser({
       username,
       password,
     });
